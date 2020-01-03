@@ -9,7 +9,7 @@ const Login = (props)=>{
 
                     <div className="row">
                         <div className="input-field col s12">
-                        <input id="email" type="email" className="validate" data-testid="email" required={true}/>
+                        <input id="email" name="email" type="email" className="validate" data-testid="email" required={true}/>
                         <label htmlFor="email">Email</label>
                         <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                         </div>
@@ -17,7 +17,7 @@ const Login = (props)=>{
 
                     <div className="row">
                         <div className="input-field col s12">
-                            <input id="password" type="password" className="validate" data-testid="password" required={true}/>
+                            <input id="password" name="password" type="password" className="validate" data-testid="password" required={true}/>
                             <label htmlFor="password">Password</label>
                             <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                         </div>
