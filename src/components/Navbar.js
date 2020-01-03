@@ -4,7 +4,7 @@ import SignedOutLinks from  './SignedOutLinks';
 import {NavLink} from 'react-router-dom';
 
 let Navbar = (props)=>{
-    let signedIn = false;
+    let {signedIn} = props;
     let navLinks = function(){
         if(signedIn){
             return(
@@ -19,7 +19,7 @@ let Navbar = (props)=>{
     return(
         <nav className="nav-wrapper grey darken-3">
             <div className="container">
-                <NavLink to="/" className='brand-logo'>
+                <NavLink to="/" className='brand-logo' data-testid="logo">
                     Ujumbe
                 </NavLink>
                 {navLinks()}
