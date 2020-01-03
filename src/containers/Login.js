@@ -22,7 +22,7 @@ const Login = (props)=>{
                     </div>
                     <div className="row">
                         <div className="input-field col s12" >
-                            <button class="waves-effect waves-light btn">Submit</button>
+                            <button className="waves-effect waves-light btn">Submit</button>
                         </div>
                     </div>
                 </form>
