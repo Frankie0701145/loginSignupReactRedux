@@ -24,7 +24,7 @@ const Login = (props)=>{
                     </div>
                     <div className="row">
                         <div className="input-field col s12" >
-                            <button className="waves-effect waves-light btn">Submit</button>
+                            <button className="waves-effect waves-light btn" data-testid="loginBtn">Login</button>
                         </div>
                     </div>
                 </form>
