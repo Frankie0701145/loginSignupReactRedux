@@ -1,7 +1,7 @@
 import React from 'react';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from  './SignedOutLinks';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 let Navbar = (props)=>{
     let signedIn = false;
@@ -19,9 +19,9 @@ let Navbar = (props)=>{
     return(
         <nav className="nav-wrapper grey darken-3">
             <div className="container">
-                <Link to="/" className='brand-logo'>
+                <NavLink to="/" className='brand-logo'>
                     Ujumbe
-                </Link>
+                </NavLink>
                 {navLinks()}
             </div>  
         </nav>
