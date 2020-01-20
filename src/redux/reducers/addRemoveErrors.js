@@ -1,4 +1,4 @@
-import {ADD_ERRORS, REMOVE_ERRORS } from '../actions';
+import {ADD_ERRORS, REMOVE_ERRORS } from '../actionsName';
 
 
 const addRemoveErrors = (state=[], action)=>{

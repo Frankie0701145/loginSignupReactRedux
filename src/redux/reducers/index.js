@@ -1,5 +1,5 @@
 import { LOGIN, LOGOUT,ADD_ERRORS, REMOVE_ERRORS } from 
-  '../actions';
+  '../actionsName';
 import authenticate from './authenticate';
 import addRemoveErrors from './addRemoveErrors';
 
