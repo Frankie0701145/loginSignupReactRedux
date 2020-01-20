@@ -17,8 +17,9 @@ const ujumbeApp = (state = initialState, action)=>{
             return {...state, errors: action.errors}
         case REMOVE_ERRORS:
             return {...state, errors: []}
+        default:
+            return state
     }
-    return state
 }
 
 export default ujumbeApp
