@@ -4,8 +4,9 @@ import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
+import ujumbeApp from './redux/reducers/index';
 
-const store = createStore();
+const store = createStore(ujumbeApp);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
