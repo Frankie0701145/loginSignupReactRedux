@@ -1,4 +1,4 @@
-import {REMOVE_ERRORS} from '../actions';
+import {REMOVE_ERRORS} from '../actionsName';
 
 const removeErrors = ()=>{
     return{
