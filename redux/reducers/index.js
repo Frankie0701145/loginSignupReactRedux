@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT,ADD_ERRORS} from 
+import { LOGIN, LOGOUT,ADD_ERRORS, REMOVE_ERRORS } from 
   '../actions';
 
 
@@ -15,6 +15,8 @@ const ujumbeApp = (state = initialState, action)=>{
             return Object.assign({}, state, {signedIn: false})
         case ADD_ERRORS:
             return {...state, errors: action.errors}
+        case REMOVE_ERRORS:
+            return {...state, errors: []}
     }
     return state
 }
