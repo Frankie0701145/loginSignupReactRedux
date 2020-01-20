@@ -1,6 +1,7 @@
 import { LOGIN, LOGOUT,ADD_ERRORS, REMOVE_ERRORS } from 
   '../actions';
 import authenticate from './authenticate';
+import addRemoveErrors from './addRemoveErrors';
 
 const initialState = {
     signedIn: false,
@@ -9,7 +10,8 @@ const initialState = {
 
 const ujumbeApp = (state={}, action)=>{
     return{
-        signedIn: authenticate(state.signedIn, action)
+        signedIn: authenticate(state.signedIn, action),
+        errors: addRemoveErrors(state.errors, action)
     }
 };
 
