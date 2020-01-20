@@ -1,4 +1,4 @@
-import {ADD_ERRORS} from '../actionsName';
+import {ADD_ERRORS} from '../actionTypes';
 
 const addErrors = (errors)=>{
     return{

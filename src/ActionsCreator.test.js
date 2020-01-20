@@ -1,6 +1,6 @@
 import addErrors from './redux/actionCreators/addErrors';
 import removeErrors from './redux/actionCreators/removeErrors';
-import { ADD_ERRORS, REMOVE_ERRORS } from './redux/actionsName';
+import { ADD_ERRORS, REMOVE_ERRORS } from './redux/actionTypes';
 
 
 describe.only('actionsCreator', ()=>{

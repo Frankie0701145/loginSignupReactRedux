@@ -1,5 +1,5 @@
 import { LOGIN, LOGOUT } from 
-  '../actionsName';
+  '../actionTypes';
 
 
 
