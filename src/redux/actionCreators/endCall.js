@@ -5,3 +5,5 @@ const endCall = ()=>{
         type: END_CALL
     }
 }
+
+export default endCall;
