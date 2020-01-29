@@ -1,14 +1,15 @@
 import ujumbeAppRedux from './redux/reducers/index';
 import addErrors from './redux/actionCreators/addErrors';
 import removeErrors from './redux/actionCreators/removeErrors';
+import startCall from './redux/actionCreators/startCall';
 
 describe('Reducer', () => {
     
     describe('Authenticate Reducer', ()=>{
 
-        it('Expect the initial state to have signedIn as false and error to be an empty array', ()=>{
+        it('Expect the initial state to have signedIn as false, error to be an empty array and isFetching to be false.', ()=>{
                 let state = ujumbeAppRedux(undefined, {});
-                let expectedState={ signedIn: false, errors: [] };
+                let expectedState={ signedIn: false, errors: [], isFetching: false };
                 expect(state).toEqual(expectedState);
         }); 
 
@@ -51,6 +52,12 @@ describe('Reducer', () => {
             }
             let state = ujumbeAppRedux(initialState, removeErrors());
             expect(state.errors).toEqual([]);
+        });
+
+        it('Expect the returned state property isFetching after calling START_CALL to be true', ()=>{
+
+            let state = ujumbeAppRedux( undefined, startCall());
+            expect(state.isFetching).toEqual(true);
         });
 
     });
