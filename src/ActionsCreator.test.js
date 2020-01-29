@@ -2,7 +2,9 @@ import addErrors from './redux/actionCreators/addErrors';
 import removeErrors from './redux/actionCreators/removeErrors';
 import startCall from './redux/actionCreators/startCall';
 import endCall from './redux/actionCreators/endCall';
-import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL } from './redux/actionTypes';
+import loginSuccess from './redux/actionCreators/loginSuccess';
+import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS } 
+    from './redux/actionTypes';
 
 
 describe.only('actionsCreator', ()=>{
@@ -50,11 +52,19 @@ describe.only('actionsCreator', ()=>{
 
     });
 
-    it('Test is the endCall action creator returns the right action type', ()=>{
+    it('Test if the endCall action creator returns the right action type', ()=>{
         let expectedAction = {
             type: END_CALL
         }
         let action = endCall();
+        expect(action).toEqual(expectedAction);
+    });
+
+    it('Test if the loginSuccess creator returns the right action type', ()=>{
+        let expectedAction = {
+            type: LOGIN_SUCCESS
+        };
+        let action = loginSuccess();
         expect(action).toEqual(expectedAction);
     });
 });
