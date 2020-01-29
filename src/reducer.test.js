@@ -2,6 +2,7 @@ import ujumbeAppRedux from './redux/reducers/index';
 import addErrors from './redux/actionCreators/addErrors';
 import removeErrors from './redux/actionCreators/removeErrors';
 import startCall from './redux/actionCreators/startCall';
+import endCall from './redux/actionCreators/endCall';
 
 describe('Reducer', () => {
     
@@ -54,10 +55,18 @@ describe('Reducer', () => {
             expect(state.errors).toEqual([]);
         });
 
-        it('Expect the returned state property isFetching after calling START_CALL to be true', ()=>{
+        it('Expect the returned state isFetching after calling START_CALL to be true', ()=>{
 
             let state = ujumbeAppRedux( undefined, startCall());
             expect(state.isFetching).toEqual(true);
+        });
+
+        it('Expect the returned state isFetching after calling the END_CALL to be false if the initial value was true', ()=>{
+            let initialState = {
+                isFetching: true
+            };
+            let state = ujumbeAppRedux(initialState, endCall());
+            expect(state.isFetching).toEqual(false);
         });
 
     });
