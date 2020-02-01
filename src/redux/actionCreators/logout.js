@@ -1,7 +1,7 @@
 import LOGOUT from '../actions';
 
 
-export const logout = (dispatch, getState)=>{
+export const logout = ()=>{
     return{
         type: LOGOUT
     }
