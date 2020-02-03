@@ -8,10 +8,6 @@ const login = (credentials)=>{
     return (dispatch )=>{
         //dispatch the START_CALL action
         dispatch(startCall());
-        let cre = {
-            firstName: 'Francis',
-            password: 'pass'
-        }
         //post the credentials to the server     
         return axios.post('http://localhost:4000/users/login', credentials).then((response)=>{
               //dispatch the loginSuccess
