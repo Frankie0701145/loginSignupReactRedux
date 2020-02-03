@@ -3,11 +3,18 @@ import removeErrors from './redux/actionCreators/removeErrors';
 import startCall from './redux/actionCreators/startCall';
 import endCall from './redux/actionCreators/endCall';
 import loginSuccess from './redux/actionCreators/loginSuccess';
+import login from './redux/actionCreators/login';
+
+import configureMockStore from 'redux-mock-store';
+import MockAdapter from 'axios-mock-adapter';
+import axios from 'axios';
+import thunk from 'redux-thunk';
+
 import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS } 
     from './redux/actionTypes';
 
 
-describe.only('actionsCreator', ()=>{
+describe('actionsCreator', ()=>{
 
     it('Test if the addErrors action creator returns the right action type and the right action errors', ()=>{
             const expectedErrors = [
@@ -67,4 +74,48 @@ describe.only('actionsCreator', ()=>{
         let action = loginSuccess();
         expect(action).toEqual(expectedAction);
     });
+
+    
+});
+
+describe.only('async actions', ()=>{
+    let mock;
+    let middlewares;
+    let mockStore;
+
+    beforeAll(()=>{
+        
+        middlewares = [thunk];
+        mockStore = configureMockStore(middlewares)
+    });
+    afterEach(() => {
+        mock.restore();
+    });
+
+    it('Test if the following actions are dispatched for a successful login action: START_CALL, LOGIN_SUCCESS and END_CALL.', ()=>{
+        let credentials = {
+            email: "coulsorfrancois@gmail.com",
+            password: "pass"
+        }
+        mock = new MockAdapter(axios);
+        mock.onPost('http://localhost:4000/users/login').reply(204);
+        //expected actions
+        let expectedActions = [
+            {type: START_CALL},
+            {type: LOGIN_SUCCESS},
+            {type: END_CALL}
+        ];
+        let initialState = {
+            error: [],
+            signedIn: false,
+            isFetching: false
+        }
+        const store = mockStore(initialState);
+        
+        return store.dispatch(login(credentials)).then(()=>{
+            console.log(store.getActions());
+            expect(store.getActions()).toEqual(expectedActions);
+        }); 
+    });
+
 });
