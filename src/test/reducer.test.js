@@ -1,8 +1,8 @@
-import ujumbeAppRedux from './redux/reducers/index';
-import addErrors from './redux/actionCreators/addErrors';
-import removeErrors from './redux/actionCreators/removeErrors';
-import startCall from './redux/actionCreators/startCall';
-import endCall from './redux/actionCreators/endCall';
+import ujumbeAppRedux from '../redux/reducers/index';
+import addErrors from '../redux/actionCreators/addErrors';
+import removeErrors from '../redux/actionCreators/removeErrors';
+import startCall from '../redux/actionCreators/startCall';
+import endCall from '../redux/actionCreators/endCall';
 
 describe('Reducer', () => {
     

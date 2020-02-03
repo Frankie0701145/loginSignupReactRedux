@@ -1,9 +1,9 @@
-import addErrors from './redux/actionCreators/addErrors';
-import removeErrors from './redux/actionCreators/removeErrors';
-import startCall from './redux/actionCreators/startCall';
-import endCall from './redux/actionCreators/endCall';
-import loginSuccess from './redux/actionCreators/loginSuccess';
-import login from './redux/actionCreators/login';
+import addErrors from '../redux/actionCreators/addErrors';
+import removeErrors from '../redux/actionCreators/removeErrors';
+import startCall from '../redux/actionCreators/startCall';
+import endCall from '../redux/actionCreators/endCall';
+import loginSuccess from '../redux/actionCreators/loginSuccess';
+import login from '../redux/actionCreators/login';
 
 import configureMockStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
@@ -11,7 +11,7 @@ import axios from 'axios';
 import thunk from 'redux-thunk';
 
 import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS } 
-    from './redux/actionTypes';
+    from '../redux/actionTypes';
 
 
 describe('actionsCreator', ()=>{

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import App from './App';
+import App from '../containers/App';
 
 test('test successful rendering of the App component', () => {
     render(<App />);
