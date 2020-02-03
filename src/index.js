@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import ujumbeApp from './redux/reducers/index';
 import {Provider} from 'react-dom';
+import thunkMiddleware from 'redux-thunk';
 
-const store = createStore(ujumbeApp);
+
+const store = createStore(
+    ujumbeApp,
+    applyMiddleware(thunkMiddleware)
+  );
 
 ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
 
