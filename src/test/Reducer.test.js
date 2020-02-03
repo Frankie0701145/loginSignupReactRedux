@@ -13,8 +13,8 @@ describe('Reducer', () => {
                 let expectedState={ signedIn: false, errors: [], isFetching: false };
                 expect(state).toEqual(expectedState);
         }); 
-
-        it('Expect the return state after firing a ADD_ERROR action to contain same errors passed in the addError action creator.', ()=>{
+    
+        it('Expect the return state after firing a ADD_ERRORS action to contain same errors passed in the addError action creator.', ()=>{
             const expectedErrors = [
                 {
                     errorName: 'ValidationError',
@@ -32,8 +32,8 @@ describe('Reducer', () => {
             let state= ujumbeAppRedux(undefined, addErrors(expectedErrors));
             expect(state.errors).toEqual(expectedErrors);
         });
-
-        it('Expect the returned state after firing REMOVE_ERROR action to not contain any errors if the previous state had errors', ()=>{
+     
+        it('Expect the returned state after firing REMOVE_ERRORS action to not contain any errors if the previous state had errors', ()=>{
             const expectedErrors = [
                 {
                     errorName: 'ValidationError',

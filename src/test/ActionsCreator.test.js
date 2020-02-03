@@ -15,7 +15,7 @@ import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS }
 
 
 describe('actionsCreator', ()=>{
-
+    //addErrors
     it('Test if the addErrors action creator returns the right action type and the right action errors', ()=>{
             const expectedErrors = [
                 {
@@ -39,7 +39,7 @@ describe('actionsCreator', ()=>{
             let action = addErrors(expectedErrors);
             expect(action).toEqual(expectAction);
     });
-
+    //removeErrors
     it('Test if the removeErrors action creator returns the right action type and the right action errors', ()=>{
         
         let expectedAction = {
@@ -49,7 +49,7 @@ describe('actionsCreator', ()=>{
         let action = removeErrors();
         expect(action).toEqual(expectedAction);
     });
-
+    //startCall
     it('Test if the startCall action creator returns the right action type', ()=>{
         let expectedAction = {
             type: START_CALL
@@ -58,7 +58,7 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
 
     });
-
+    //endCall
     it('Test if the endCall action creator returns the right action type', ()=>{
         let expectedAction = {
             type: END_CALL
@@ -66,7 +66,7 @@ describe('actionsCreator', ()=>{
         let action = endCall();
         expect(action).toEqual(expectedAction);
     });
-
+    //loginSuccess
     it('Test if the loginSuccess creator returns the right action type', ()=>{
         let expectedAction = {
             type: LOGIN_SUCCESS
@@ -91,7 +91,7 @@ describe('async actions', ()=>{
     afterEach(() => {
         // mock.restore();
     });
-
+    //Successful login
     it('Test if the following actions are dispatched for a successful login action: START_CALL, LOGIN_SUCCESS and END_CALL.', ()=>{
         let credentials = {
             email: "coulsorfrancois@gmail.com",
@@ -116,7 +116,7 @@ describe('async actions', ()=>{
             expect(store.getActions()).toEqual(expectedActions);
         }); 
     });
-
+    //Unsuccessful login
     it('Test if the following actions are dispatched for unsuccessful login action.START_CALL, ADD_ERRORS and END_CALL. ', ()=>{
         let credentials = {
             email: "coulsorfrancois@gmail.com",
