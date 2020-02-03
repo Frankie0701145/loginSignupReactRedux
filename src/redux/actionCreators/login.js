@@ -19,9 +19,8 @@ const login = (credentials)=>{
               // dispatch the endCall
               dispatch(endCall());
         }).catch((err)=>{
-            console.log(err);
             //call the action ADD_ERROR
-            dispatch(addErrors(error));
+            dispatch(addErrors(err));
             //call the END_CALL action.
             dispatch(endCall());
         });

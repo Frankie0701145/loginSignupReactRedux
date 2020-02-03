@@ -78,18 +78,18 @@ describe('actionsCreator', ()=>{
     
 });
 
-describe.only('async actions', ()=>{
+describe('async actions', ()=>{
     let mock;
     let middlewares;
     let mockStore;
 
     beforeAll(()=>{
-        
+        mock = new MockAdapter(axios); 
         middlewares = [thunk];
         mockStore = configureMockStore(middlewares)
     });
     afterEach(() => {
-        mock.restore();
+        // mock.restore();
     });
 
     it('Test if the following actions are dispatched for a successful login action: START_CALL, LOGIN_SUCCESS and END_CALL.', ()=>{
@@ -97,7 +97,7 @@ describe.only('async actions', ()=>{
             email: "coulsorfrancois@gmail.com",
             password: "pass"
         }
-        mock = new MockAdapter(axios);
+        
         mock.onPost('http://localhost:4000/users/login').reply(204);
         //expected actions
         let expectedActions = [
@@ -113,8 +113,30 @@ describe.only('async actions', ()=>{
         const store = mockStore(initialState);
         
         return store.dispatch(login(credentials)).then(()=>{
-            console.log(store.getActions());
             expect(store.getActions()).toEqual(expectedActions);
+        }); 
+    });
+
+    it('Test if the following actions are dispatched for unsuccessful login action.START_CALL, ADD_ERRORS and END_CALL. ', ()=>{
+        let credentials = {
+            email: "coulsorfrancois@gmail.com",
+            password: "pass"
+        };
+        mock.onPost('http://localhost:4000/users/login').reply(404);
+        //expected actions
+        let expectedActions = [
+            {type: START_CALL},
+            {type: ADD_ERRORS},
+            {type: END_CALL}
+        ];
+        let initialState = {
+            error: [],
+            signedIn: false,
+            isFetching: false
+        }
+        const store = mockStore(initialState);
+        return store.dispatch(login(credentials)).then(()=>{
+            expect(store.getActions()).toMatchObject(expectedActions);
         }); 
     });
 
