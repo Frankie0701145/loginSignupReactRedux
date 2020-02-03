@@ -5,7 +5,7 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import ujumbeApp from './redux/reducers/index';
-import {Provider} from 'react-dom';
+import {Provider} from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
 
