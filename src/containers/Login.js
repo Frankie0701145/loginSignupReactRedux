@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
 
-class Login extends Component {
+export class Login extends Component {
     render(){
         return(
             <div className="container"> 
@@ -41,5 +42,12 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state)=>{
+    return {
+        signedIn: state.signedIn,
+        isFetching: state.isFetching,
+        errors: state.errors
+    }
+}
 
-export default Login;
+export default connect(mapStateToProps)(Login);
