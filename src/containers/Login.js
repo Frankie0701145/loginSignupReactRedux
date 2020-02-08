@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import addErrors from '../redux/actionCreators/addErrors';
 import login from '../redux/actionCreators/login';
+import removeErrors from '../redux/actionCreators/removeErrors';
 import ErrorComponent from '../components/Errors';
 
 
@@ -35,7 +36,7 @@ export class Login extends Component {
                 <div className="row">
                     <form className="col s12" onSubmit={this.submit} method='POST'>
 
-                        {this.props.errors.length> 0 ? <ErrorComponent errors={this.props.errors}/>: "All is good"}
+                        {this.props.errors.length> 0 ? <ErrorComponent errors={this.props.errors} removeErrors={this.props.removeErrors()}/>: "All is good"}
 
                         <div className="row">
                             <div className="input-field col s12">
@@ -87,7 +88,8 @@ const mapStateToProps = (state, ownProps)=>{
 const mapDispatchToProps = (dispatch, ownProps)=>{
     return {
         addErrors: (errors)=>{dispatch(addErrors(errors))},
-        login: (credential)=>{dispatch(login(credential))}
+        login: (credential)=>{dispatch(login(credential))},
+        removeErrors: ()=>{dispatch(removeErrors)}
     }
 }
 
