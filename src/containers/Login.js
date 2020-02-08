@@ -1,13 +1,35 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import addErrors from '../redux/actionCreators/addErrors';
+import ErrorComponent from '../components/Errors';
+
 
 export class Login extends Component {
+
+
+    submit = (e)=>{
+       e.preventDefault();
+       let password = e.target.password.value;
+       let confirmPassword = e.target.confirmPassword.value;
+       if(password !== confirmPassword){
+           let errors = [{
+               errorName: "ValidationError",
+               errorMessage: "The password does not match confirm password"
+           }];
+           this.props.addErrors(errors);
+           console.log(this.props.errors);
+       }      
+    }
+    
     render(){
         return(
             <div className="container"> 
+                
                 <div className="row">
-                    <form className="col s12">
-    
+                    <form className="col s12" onSubmit={this.submit} method='POST'>
+
+                        {this.props.errors.length> 0 ? <ErrorComponent errors={this.props.errors}/>: "All is good"}
+
                         <div className="row">
                             <div className="input-field col s12">
                             <input id="email" name="email" type="email" className="validate" data-testid="email" required={true}/>
@@ -30,6 +52,7 @@ export class Login extends Component {
                                 <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                             </div>
                         </div>
+                        
                         <div className="row">
                             <div className="input-field col s12" >
                                 <button className="waves-effect waves-light btn" data-testid="loginBtn">Login</button>
@@ -42,7 +65,7 @@ export class Login extends Component {
     }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state, ownProps)=>{
     return {
         signedIn: state.signedIn,
         isFetching: state.isFetching,
@@ -50,4 +73,10 @@ const mapStateToProps = (state)=>{
     }
 }
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = (dispatch, ownProps)=>{
+    return {
+        addErrors: (errors)=>{dispatch(addErrors(errors))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
