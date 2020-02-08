@@ -3,11 +3,11 @@ import { render } from '@testing-library/react';
 import {Login} from '../containers/Login';
 
 test('successful rendering of the Login component', () => {
-    render(<Login />);
+    render(<Login errors={[]} />);
 });
 
 test("Test if the email and password inputs are present, have the required=true attribute and have name attribute with correct name", ()=>{
-    let {getByTestId} = render(<Login/>);
+    let {getByTestId} = render(<Login errors={[]}/>);
     let email = getByTestId('email');
     let password = getByTestId('password');
     let confirmPassword = getByTestId('confirmPassword');
