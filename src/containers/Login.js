@@ -17,7 +17,6 @@ export class Login extends Component {
                errorMessage: "The password does not match confirm password"
            }];
            this.props.addErrors(errors);
-           console.log(this.props.errors);
        }      
     }
     
