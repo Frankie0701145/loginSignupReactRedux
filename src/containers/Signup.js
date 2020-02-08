@@ -6,7 +6,7 @@ const Signup = (props)=>{
     return(
         <div className="container"> 
               <div className="row">
-                <form className="col s12">
+                <form className="col s12" method="POST">
 
                     <div className="row">
                         <div className="input-field col s6">
@@ -31,7 +31,7 @@ const Signup = (props)=>{
 
                         <div className="input-field col s6">
                             <input id="workAddress" name="workAddress" type="text" className="validate" data-testid="workAddress" required={true} />
-                            <label htmlFor="workAddress">Last Name</label>
+                            <label htmlFor="workAddress">Work Address</label>
                             <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                         </div>
                     </div>
