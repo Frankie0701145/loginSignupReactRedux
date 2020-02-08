@@ -9,7 +9,7 @@ const login = (credentials)=>{
         //dispatch the START_CALL action
         dispatch(startCall());
         //post the credentials to the server     
-        return axios.post('http://localhost:4000/users/login', credentials).then((response)=>{
+        return axios.post('/users/login', credentials).then((response)=>{
               //dispatch the loginSuccess
               dispatch(loginSuccess());
               // dispatch the endCall
