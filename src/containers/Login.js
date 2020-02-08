@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import addErrors from '../redux/actionCreators/addErrors';
+import login from '../redux/actionCreators/login';
 import ErrorComponent from '../components/Errors';
 
 
@@ -17,7 +18,7 @@ export class Login extends Component {
                errorMessage: "The password does not match confirm password"
            }];
            this.props.addErrors(errors);
-       }      
+       }
     }
     
     render(){
@@ -74,7 +75,8 @@ const mapStateToProps = (state, ownProps)=>{
 
 const mapDispatchToProps = (dispatch, ownProps)=>{
     return {
-        addErrors: (errors)=>{dispatch(addErrors(errors))}
+        addErrors: (errors)=>{dispatch(addErrors(errors))},
+        login: (credential)=>{dispatch(login(credential))}
     }
 }
 
