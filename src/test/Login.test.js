@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getAllByTestId } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import {Login} from '../containers/Login';
 
 test('successful rendering of the Login component', () => {
@@ -31,4 +31,12 @@ test("Test if the progress div gets added if the isFetching is true and that the
     expect(progressDIV).toBeInTheDocument(progressDIV);
     let loginBtn = getByTestId("loginBtn");
     expect(loginBtn).toHaveAttribute('disabled');
+});
+
+test("Test if the progress div is not added if the isFetching is false and that the login button has disabled as false",()=>{
+    let {getByTestId, queryByTestId} = render(<Login errors={[]} isFetching={false}/>);
+    let progressDIV = queryByTestId("progress");
+    expect(progressDIV).toBe(null);
+    let loginBtn = getByTestId("loginBtn");
+    expect(loginBtn).not.toHaveAttribute('disabled');
 });
