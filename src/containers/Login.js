@@ -59,12 +59,16 @@ export class Login extends Component {
                                 <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                             </div>
                         </div>
+                        {this.props.isFetching===true?<div className="progress">
+                            <div className="indeterminate"></div>
+                        </div>:""}
                         
                         <div className="row">
                             <div className="input-field col s12" >
-                                <button className="waves-effect waves-light btn" data-testid="loginBtn">Login</button>
+                                <button className="waves-effect waves-light btn" data-testid="loginBtn" disabled={this.props.isFetching}>Login</button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>

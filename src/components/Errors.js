@@ -4,7 +4,7 @@ import React from 'react';
 
 const Errors = (props)=>{
     return(
-        <div className='row'>
+        <div className='row red lighten-3 p-2'>
             <ul>
                 {
                   props.errors.map((err,index)=>{ 
