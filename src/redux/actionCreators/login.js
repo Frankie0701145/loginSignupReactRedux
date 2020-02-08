@@ -15,10 +15,14 @@ const login = (credentials)=>{
               // dispatch the endCall
               dispatch(endCall());
         }).catch((err)=>{
-            //call the action ADD_ERROR
-            dispatch(addErrors(err));
-            //call the END_CALL action.
-            dispatch(endCall());
+            let errors =[{
+                errorMessage: err.response.data.message,
+                errorName: err.response.statusText
+            }];
+            // //call the action ADD_ERROR
+            dispatch(addErrors(errors));
+            // //call the END_CALL action.
+            // dispatch(endCall());
         });
     }
 }

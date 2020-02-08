@@ -12,12 +12,19 @@ export class Login extends Component {
        e.preventDefault();
        let password = e.target.password.value;
        let confirmPassword = e.target.confirmPassword.value;
+       let email = e.target.email.value
        if(password !== confirmPassword){
            let errors = [{
                errorName: "ValidationError",
                errorMessage: "The password does not match confirm password"
            }];
            this.props.addErrors(errors);
+       }else{
+           let credential = {
+               email,
+               password
+           }
+           this.props.login(credential);
        }
     }
     
