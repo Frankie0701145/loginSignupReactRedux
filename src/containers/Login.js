@@ -12,31 +12,25 @@ export class Login extends Component {
     submit = (e)=>{
        e.preventDefault();
        let password = e.target.password.value;
-       let confirmPassword = e.target.confirmPassword.value;
        let email = e.target.email.value
-       if(password !== confirmPassword){
-           let errors = [{
-               errorName: "ValidationError",
-               errorMessage: "The password does not match confirm password"
-           }];
-           this.props.addErrors(errors);
-       }else{
-           let credential = {
-               email,
-               password
-           }
-           this.props.login(credential);
-       }
+       
+        let credential = {
+            email,
+            password
+        }
+        this.props.login(credential);
+       
     }
     
     render(){
+        console.log(this.props.removeErrors);
         return(
             <div className="container"> 
                 
                 <div className="row">
                     <form className="col s12" onSubmit={this.submit} method='POST'>
 
-                        {this.props.errors.length> 0 ? <ErrorComponent errors={this.props.errors} removeErrors={this.props.removeErrors()}/>: "All is good"}
+                        {this.props.errors.length> 0 ? <ErrorComponent errors={this.props.errors} removeErrors={this.props.removeErrors}/>: "All is good"}
 
                         <div className="row">
                             <div className="input-field col s12">
@@ -50,13 +44,6 @@ export class Login extends Component {
                             <div className="input-field col s12">
                                 <input id="password" name="password" type="password" className="validate" data-testid="password" required={true}/>
                                 <label htmlFor="password">Password</label>
-                                <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="confirmPassword" name="confirmPassword" type="password" className="validate" data-testid="confirmPassword" required={true}/>
-                                <label htmlFor="confirmPassword">Confirm Password</label>
                                 <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                             </div>
                         </div>
@@ -89,7 +76,7 @@ const mapDispatchToProps = (dispatch, ownProps)=>{
     return {
         addErrors: (errors)=>{dispatch(addErrors(errors))},
         login: (credential)=>{dispatch(login(credential))},
-        removeErrors: ()=>{dispatch(removeErrors)}
+        removeErrors: ()=>{dispatch(removeErrors())}
     }
 }
 
