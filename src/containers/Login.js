@@ -27,7 +27,7 @@ export class Login extends Component {
         }     
     }
     render(){
-        console.log(this.props.removeErrors);
+        
         return(
             <div className="container"> 
                 
