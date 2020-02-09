@@ -29,6 +29,7 @@ export class Signup extends Component{
     }
 
     render(){
+        console.log(this.props);
         return(
             <div className="container"> 
                 <div className="row">
@@ -83,6 +84,11 @@ export class Signup extends Component{
                                 <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                             </div>
                         </div>
+
+                        {this.props.isFetching===true?<div className="progress" data-testid="progress">
+                            <div className="indeterminate"></div>
+                        </div>:""}
+                        
 
                         <div className="row">
                             <div className="input-field col s12" >
