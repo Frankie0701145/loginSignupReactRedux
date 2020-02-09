@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 
-const Signup = (props)=>{
+export const Signup = (props)=>{
 
     return(
         <div className="container"> 
@@ -68,4 +69,13 @@ const Signup = (props)=>{
         </div>
     )
 };
-export default Signup;
+
+const mapStateToState = (state, ownProps)=>{
+    return ({
+        signedIn: state.signedIn,
+        isFetching: state.isFetching,
+        errors:  state.errors
+    });
+}
+
+export default connect(mapStateToState)(Signup);
