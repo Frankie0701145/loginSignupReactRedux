@@ -3,12 +3,12 @@ import { render } from '@testing-library/react';
 import {Signup} from '../containers/Signup';
 
 test('test the rendering of the Signup component', () => {
-    render(<Signup />);
+    render(<Signup errors={[]}/>);
 });
 
 test('test that the signup component has the firstName,lastName, homeAddress, workAddress, email, password and confirmPassword input and they have required=true attribute and name attribute.', 
     () => {
-            let {getByTestId}=render(<Signup />);
+            let {getByTestId}=render(<Signup errors={[]}/>);
             let firstName = getByTestId('firstName');
             let lastName = getByTestId('lastName');
             let homeAddress = getByTestId('homeAddress');
@@ -16,6 +16,7 @@ test('test that the signup component has the firstName,lastName, homeAddress, wo
             let email = getByTestId('email');
             let password = getByTestId('password');
             let confirmPassword = getByTestId('confirmPassword');
+            let phoneNumber = getByTestId('phoneNumber');
 
             //expect the inputs are there/
             expect(firstName).toBeInTheDocument();
@@ -26,6 +27,7 @@ test('test that the signup component has the firstName,lastName, homeAddress, wo
             expect(firstName).toBeInTheDocument();
             expect(password).toBeInTheDocument();
             expect(confirmPassword).toBeInTheDocument();
+            expect(phoneNumber).toBeInTheDocument();
 
             //expect the inputs to be required
             expect(firstName).toBeRequired();
@@ -36,6 +38,7 @@ test('test that the signup component has the firstName,lastName, homeAddress, wo
             expect(firstName).toBeRequired();
             expect(password).toBeRequired();
             expect(confirmPassword).toBeRequired();
+            expect(phoneNumber).toBeRequired();
 
             //expect the inputs to have name attribute
             expect(firstName).toHaveAttribute('name','firstName');
@@ -46,6 +49,7 @@ test('test that the signup component has the firstName,lastName, homeAddress, wo
             expect(firstName).toHaveAttribute('name','firstName');
             expect(password).toHaveAttribute('name','password');
             expect(confirmPassword).toHaveAttribute('name','confirmPassword');
+            expect(phoneNumber).toHaveAttribute('name','phoneNumber');
             
         }
 );
