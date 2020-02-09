@@ -3,6 +3,7 @@ import removeErrors from '../redux/actionCreators/removeErrors';
 import startCall from '../redux/actionCreators/startCall';
 import endCall from '../redux/actionCreators/endCall';
 import loginSuccess from '../redux/actionCreators/loginSuccess';
+import signup from '../redux/actionCreators/signup';
 import signupSuccess from '../redux/actionCreators/signupSuccess';
 import login from '../redux/actionCreators/login';
 
@@ -130,7 +131,7 @@ describe('async actions', ()=>{
         };
         let error = {};
         error.message = "Login failed. Invalid email or password";
-        mock.onPost('/users/login').reply(500, error);
+        mock.onPost('/users/login').reply(401, error);
         //expected actions
         let expectedActions = [
             {type: START_CALL},
@@ -147,5 +148,31 @@ describe('async actions', ()=>{
             expect(store.getActions()).toMatchObject(expectedActions);
         }); 
     });
-
+    //Unsuccessful signup
+    it("Test if the following actions are dispatched for unsuccessful signup START_CALL, ADD_ERRORS and END_CALL", ()=>{
+        let userDetails = {
+            email: "coulsorfrancois@gmail.com",
+            password: "pass",
+            phoneNumber: "phoneNumber"
+        }
+        let errors = [
+            {errorMessage: "Home Address is required"},
+            {errorMessage: "First Name is required"}
+        ]
+        mock.onPost('/users/signup').reply(400,errors);
+        let expectedActions = [
+            {type: START_CALL},
+            {type: ADD_ERRORS},
+            {type: END_CALL }
+        ];
+        let initialState = {
+            error: [],
+            signedIn: false,
+            isFetching: false
+        }
+        const store = mockStore(initialState);
+        return store.dispatch(signup(userDetails)).then(()=>{
+            expect(store.getActions()).toMatchObject(expectedActions);
+        });
+    });
 });

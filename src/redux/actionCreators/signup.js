@@ -7,7 +7,6 @@ import signupSuccess from './signupSuccess';
 const signup = (userDetails)=>{
     return (dispatch)=>{
         dispatch(startCall());
-        console.log(userDetails);
         return axios.post('/users/signup', userDetails).then((response)=>{
                 console.log(response);
                 dispatch(endCall());
