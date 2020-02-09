@@ -19,10 +19,10 @@ const login = (credentials)=>{
                 errorMessage: err.response.data.message,
                 errorName: err.response.statusText
             }];
-            // //call the action ADD_ERROR
+            //call the action ADD_ERROR
             dispatch(addErrors(errors));
-            // //call the END_CALL action.
-            // dispatch(endCall());
+            //call the END_CALL action.
+            dispatch(endCall());
         });
     }
 }

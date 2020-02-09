@@ -43,8 +43,7 @@ describe('actionsCreator', ()=>{
     it('Test if the removeErrors action creator returns the right action type and the right action errors', ()=>{
         
         let expectedAction = {
-            type: REMOVE_ERRORS,
-            errors: []
+            type: REMOVE_ERRORS
         };
         let action = removeErrors();
         expect(action).toEqual(expectedAction);
@@ -74,8 +73,6 @@ describe('actionsCreator', ()=>{
         let action = loginSuccess();
         expect(action).toEqual(expectedAction);
     });
-
-    
 });
 
 describe('async actions', ()=>{
@@ -89,7 +86,7 @@ describe('async actions', ()=>{
         mockStore = configureMockStore(middlewares)
     });
     afterEach(() => {
-        // mock.restore();
+        mock.reset();
     });
     //Successful login
     it('Test if the following actions are dispatched for a successful login action: START_CALL, LOGIN_SUCCESS and END_CALL.', ()=>{
@@ -98,7 +95,7 @@ describe('async actions', ()=>{
             password: "pass"
         }
         
-        mock.onPost('http://localhost:4000/users/login').reply(204);
+        mock.onPost('/users/login').reply(204);
         //expected actions
         let expectedActions = [
             {type: START_CALL},
@@ -122,7 +119,9 @@ describe('async actions', ()=>{
             email: "coulsorfrancois@gmail.com",
             password: "pass"
         };
-        mock.onPost('http://localhost:4000/users/login').reply(404);
+        let error = {};
+        error.message = "Login failed. Invalid email or password";
+        mock.onPost('/users/login').reply(500, error);
         //expected actions
         let expectedActions = [
             {type: START_CALL},
