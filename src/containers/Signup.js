@@ -2,20 +2,30 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import addErrors from '../redux/actionCreators/addErrors';
 import removeErrors from '../redux/actionCreators/removeErrors';
+import ErrorComponent from '../components/Errors';
+
 
 export class Signup extends Component{
 
     submit = (e)=>{
         e.preventDefault();
+        let password =  e.target.password.value;
+        let confirmPassword = e.target.confirmPassword.value;
         let userDetails = {
             firstName: e.target.firstName.value,
             lastName: e.target.lastName.value,
             email: e.target.email.value,
             homeAddress: e.target.homeAddress.value,
             workAddress: e.target.workAddress.value,
-            password: e.target.password.value
+            password: password
         }
-        console.log(userDetails);
+        
+        if(password !== confirmPassword){
+            let errors = [{
+                errorMessage: "The password and confirm password don't match"
+            }];
+            this.props.addErrors(errors);
+        }
     }
 
     render(){
@@ -24,6 +34,7 @@ export class Signup extends Component{
                 <div className="row">
                     <form className="col s12" method="POST" onSubmit={this.submit}>
 
+                    {this.props.errors.length> 0 ? <ErrorComponent errors={this.props.errors} removeErrors={this.props.removeErrors}/>: "All is good"}
                         <div className="row">
                             <div className="input-field col s6">
                                 <input id="firstName" name="firstName" type="text" className="validate" data-testid="firstName" required={true}/>
