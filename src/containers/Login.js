@@ -21,7 +21,11 @@ export class Login extends Component {
         this.props.login(credential);
        
     }
-    
+    componentDidMount(){
+        if(this.props.signedIn){
+            this.props.history.push('/');
+        }     
+    }
     render(){
         console.log(this.props.removeErrors);
         return(
