@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import addErrors from '../redux/actionCreators/addErrors';
 import removeErrors from '../redux/actionCreators/removeErrors';
+import signup from '../redux/actionCreators/signup';
 import ErrorComponent from '../components/Errors';
 
 
 export class Signup extends Component{
-
+    
     submit = (e)=>{
         e.preventDefault();
         let password =  e.target.password.value;
@@ -17,19 +18,20 @@ export class Signup extends Component{
             email: e.target.email.value,
             homeAddress: e.target.homeAddress.value,
             workAddress: e.target.workAddress.value,
-            password: password
+            password: password,
+            phoneNumber: e.target.phoneNumber.value
         }
-        
         if(password !== confirmPassword){
             let errors = [{
                 errorMessage: "The password and confirm password don't match"
             }];
             this.props.addErrors(errors);
+        }else{
+            this.props.signup(userDetails);
         }
     }
 
     render(){
-        console.log(this.props);
         return(
             <div className="container"> 
                 <div className="row">
@@ -65,9 +67,14 @@ export class Signup extends Component{
                         </div>
 
                         <div className="row">
-                            <div className="input-field col s12">
+                            <div className="input-field col s6">
                                 <input id="email" type="email" name="email" className="validate" data-testid="email" required={true} />
                                 <label htmlFor="email">Email</label>
+                                <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                            </div>
+                            <div className="input-field col s6">
+                                <input id="phoneNumber" type="tel" name="phoneNumber" className="validate" data-testid="phoneNumber" required={true} />
+                                <label htmlFor="phoneNumber">Phone Number</label>
                                 <span className="helper-text" data-error="wrong" data-success="right">Helper text</span>
                             </div>
                         </div>
@@ -114,7 +121,8 @@ const mapStateToState = (state, ownProps)=>{
 const mapDispatchToState = (dispatch, ownProps)=>{
     return({
         addErrors: (errors)=>{dispatch(addErrors(errors))},
-        removeErrors: ()=>{dispatch(removeErrors())}
+        removeErrors: ()=>{dispatch(removeErrors())},
+        signup: (userDetails)=>{dispatch(signup(userDetails))}
     })
 }
 
