@@ -153,7 +153,7 @@ describe('async actions', ()=>{
         let userDetails = {
             email: "coulsorfrancois@gmail.com",
             password: "pass",
-            phoneNumber: "phoneNumber"
+            phoneNumber: "0701145533"
         }
         let errors = [
             {errorMessage: "Home Address is required"},
@@ -165,6 +165,28 @@ describe('async actions', ()=>{
             {type: ADD_ERRORS},
             {type: END_CALL }
         ];
+        let initialState = {
+            error: [],
+            signedIn: false,
+            isFetching: false
+        }
+        const store = mockStore(initialState);
+        return store.dispatch(signup(userDetails)).then(()=>{
+            expect(store.getActions()).toMatchObject(expectedActions);
+        });
+    });
+    it("Test if the following actions are dispatched for successful signup START_CALL, END_CALL and SIGNUP_SUCCESSFUL", ()=>{
+        let userDetails = {
+            email: "coulsorfrancois@gmail.com",
+            password: "pass",
+            phoneNumber: "0701145533"
+        }
+        mock.onPost('users/signup').reply(204);
+        let expectedActions = [
+            {type: START_CALL},
+            {type: END_CALL },
+            {type: SIGNUP_SUCCESS}
+        ]
         let initialState = {
             error: [],
             signedIn: false,
