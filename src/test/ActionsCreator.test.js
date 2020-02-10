@@ -120,6 +120,7 @@ describe('async actions', ()=>{
         mock.onPost('/users/login', credentials).reply(204, data);
         //expected actions
         let expectedActions = [
+            {type: REMOVE_ERRORS},
             {type: START_CALL},
             {type: ADD_USER_DETAILS, userDetails: data},
             {type: LOGIN_SUCCESS},
@@ -147,6 +148,7 @@ describe('async actions', ()=>{
         mock.onPost('/users/login').reply(401, error);
         //expected actions
         let expectedActions = [
+            {type: REMOVE_ERRORS},
             {type: START_CALL},
             {type: ADD_ERRORS},
             {type: END_CALL}
