@@ -4,6 +4,7 @@ import removeErrors from '../redux/actionCreators/removeErrors';
 import startCall from '../redux/actionCreators/startCall';
 import endCall from '../redux/actionCreators/endCall';
 import loginSuccess from '../redux/actionCreators/loginSuccess';
+import logoutSuccess from '../redux/actionCreators/logoutSuccess';
 import addUserDetails from '../redux/actionCreators/addUserDetails';
 
 describe('Reducer', () => {
@@ -83,6 +84,13 @@ describe('Reducer', () => {
             }
             let state = ujumbeAppRedux(undefined, addUserDetails(userDetails));
             expect(state.userDetails).toEqual(userDetails);
+        });
+        it("Expect the returned state of signedIn to be false if the initial value was true.",()=>{
+            let initialState = {
+                signedIn: true
+            };
+            let state = ujumbeAppRedux(initialState,logoutSuccess());
+            expect(state.signedIn).toEqual(false);
         });
     });
 });
