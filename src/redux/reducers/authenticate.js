@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from 
+import { LOGOUT, LOGIN_SUCCESS } from 
   '../actionTypes';
 
 
@@ -6,7 +6,7 @@ import { LOGIN, LOGOUT } from
 const authenticate = (state=false, action)=>{
 
     switch(action.type){
-        case LOGIN:
+        case LOGIN_SUCCESS:
            return true
         case LOGOUT:
            return false
