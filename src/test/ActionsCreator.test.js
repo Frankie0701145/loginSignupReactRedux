@@ -10,7 +10,7 @@ import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 
-import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS } 
+import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS } 
     from '../redux/actionTypes';
 
 
@@ -89,16 +89,24 @@ describe('async actions', ()=>{
         mock.reset();
     });
     //Successful login
-    it('Test if the following actions are dispatched for a successful login action: START_CALL, LOGIN_SUCCESS and END_CALL.', ()=>{
+    it('Test if the following actions are dispatched for a successful login action: START_CALL,ADD_USER_DETAILS and LOGIN_SUCCESS and END_CALL.', ()=>{
         let credentials = {
             email: "coulsorfrancois@gmail.com",
             password: "pass"
         }
-        
-        mock.onPost('/users/login').reply(204);
+        let data ={
+            accessToken: "ncancnoancaomcokmaomcac",
+            firstName: "Francis",
+            lastName: "Njuguna",
+            activated: false,
+            homeCoordinate: [21,132],
+            workCoordinate: [12,35]
+        }
+        mock.onPost('/users/login', credentials).reply(204, data);
         //expected actions
         let expectedActions = [
             {type: START_CALL},
+            {type: ADD_USER_DETAILS, userDetails: data},
             {type: LOGIN_SUCCESS},
             {type: END_CALL}
         ];
@@ -121,7 +129,7 @@ describe('async actions', ()=>{
         };
         let error = {};
         error.message = "Login failed. Invalid email or password";
-        mock.onPost('/users/login').reply(500, error);
+        mock.onPost('/users/login').reply(401, error);
         //expected actions
         let expectedActions = [
             {type: START_CALL},

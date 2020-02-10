@@ -15,7 +15,7 @@ const login = (credentials)=>{
               let data =  response.data;
               localStorage.setItem("jwt", data.accessToken);
               let userDetails = {
-                  jwt: response.data.accessToken,
+                  accessToken: response.data.accessToken,
                   firstName: data.firstName,
                   lastName: data.lastName,
                   homeCoordinate: data.homeCoordinate,
