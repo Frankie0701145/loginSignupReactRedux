@@ -26,7 +26,7 @@ const login = (credentials)=>{
                   activated: data.activated
               }
               dispatch(addUserDetails(userDetails));
-              dispatch(loginSuccess(userDetails));
+              dispatch(loginSuccess());
               dispatch(endCall());
         }).catch((err)=>{
             let errors =[{
