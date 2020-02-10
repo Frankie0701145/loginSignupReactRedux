@@ -2,7 +2,7 @@
 import authenticate from './authenticate';
 import addRemoveErrors from './addRemoveErrors';
 import startEndCall from './startEndCall';
-import userDetails from './setUserDetails';
+import userDetails from './userDetails';
 
 
 const ujumbeApp = (state={}, action)=>{
