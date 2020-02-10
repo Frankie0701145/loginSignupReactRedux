@@ -2,8 +2,9 @@ import React from 'react';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from  './SignedOutLinks';
 import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-let Navbar = (props)=>{
+export let Navbar = (props)=>{
     let {signedIn} = props;
     let navLinks = function(){
         if(signedIn){
@@ -27,5 +28,9 @@ let Navbar = (props)=>{
         </nav>
     )
 };
-
-export default Navbar;
+const mapStateToProps = (state, ownProps)=>{
+    return {
+        signedIn: state.signedIn
+    }
+};
+export default connect(mapStateToProps)(Navbar);
