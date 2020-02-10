@@ -11,8 +11,9 @@ import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 
-import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS } 
+import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS, REMOVE_USER_DETAILS } 
     from '../redux/actionTypes';
+import removeUserDetails from '../redux/actionCreators/removeUserDetails';
 
 
 describe('actionsCreator', ()=>{
@@ -86,6 +87,14 @@ describe('actionsCreator', ()=>{
             userDetails
         }
         let action = addUserDetails(userDetails);
+        expect(action).toEqual(expectedAction);
+    });
+    //removeUserDetails
+    it("Test if the removeUserDetails action creator returns the right action type", ()=>{
+        let expectedAction = {
+            type: REMOVE_USER_DETAILS
+        };
+        let action = removeUserDetails();
         expect(action).toEqual(expectedAction);
     });
 });
