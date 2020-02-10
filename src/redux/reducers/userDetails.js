@@ -1,4 +1,4 @@
-import {REMOVE_USER_DETAILS, ADD_USER_DETAILS} from './actionTypes';
+import {REMOVE_USER_DETAILS, ADD_USER_DETAILS} from '../actionTypes';
 
 
 const userDetails = (state = {}, action)=>{
