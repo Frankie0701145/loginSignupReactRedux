@@ -8,7 +8,7 @@ import userDetails from './userDetails';
 const ujumbeApp = (state={}, action)=>{
     return{
         signedIn: authenticate(state.signedIn, action),
-        userDetails: userDetails(state.user, action),
+        userDetails: userDetails(state.userDetails, action),
         errors: addRemoveErrors(state.errors, action),
         isFetching: startEndCall(state.isFetching, action)
     }
