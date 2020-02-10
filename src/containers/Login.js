@@ -26,6 +26,11 @@ export class Login extends Component {
             this.props.history.push('/');
         }     
     }
+    componentDidUpdate(){
+        if(this.props.signedIn){
+            this.props.history.push('/');
+        } 
+    }
     render(){
         
         return(
