@@ -9,7 +9,7 @@ export let Navbar = (props)=>{
     let navLinks = function(){
         if(signedIn){
             return(
-                <SignedInLinks/>
+                <SignedInLinks firstName={props.firstName}/>
             )
         }else{
             return(
@@ -17,6 +17,7 @@ export let Navbar = (props)=>{
             )
         }
     }
+    console.log(props);
     return(
         <nav className="nav-wrapper grey darken-3">
             <div className="container">
@@ -30,7 +31,8 @@ export let Navbar = (props)=>{
 };
 const mapStateToProps = (state, ownProps)=>{
     return {
-        signedIn: state.signedIn
+        signedIn: state.signedIn,
+        firstName: state.userDetails.firstName
     }
 };
 export default connect(mapStateToProps)(Navbar);
