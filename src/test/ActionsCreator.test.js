@@ -7,14 +7,16 @@ import login from '../redux/actionCreators/login';
 import addUserDetails from '../redux/actionCreators/addUserDetails';
 import logoutSuccess from '../redux/actionCreators/logoutSuccess';
 import removeUserDetails from '../redux/actionCreators/removeUserDetails';
+import addSuccessMessages from '../redux/actionCreators/addSucccessMessages';
 
 import configureMockStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 
-import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS, REMOVE_USER_DETAILS, LOGOUT_SUCCESS } 
+import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS, REMOVE_USER_DETAILS, LOGOUT_SUCCESS, REMOVE_SUCCESS_MESSAGES, ADD_SUCCESS_MESSAGES } 
     from '../redux/actionTypes';
+import removeSuccessMessages from '../redux/actionCreators/removeSuccessMessages';
 
 
 
@@ -53,7 +55,7 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //startCall
-    it('Test if the startCall action creator returns the right action type', ()=>{
+    it('Test if the startCall action creator returns the right action', ()=>{
         let expectedAction = {
             type: START_CALL
         }
@@ -62,7 +64,7 @@ describe('actionsCreator', ()=>{
 
     });
     //endCall
-    it('Test if the endCall action creator returns the right action type', ()=>{
+    it('Test if the endCall action creator returns the right action', ()=>{
         let expectedAction = {
             type: END_CALL
         }
@@ -70,7 +72,7 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //loginSuccess
-    it('Test if the loginSuccess action creator returns the right action type', ()=>{
+    it('Test if the loginSuccess action creator returns the right action', ()=>{
         let expectedAction = {
             type: LOGIN_SUCCESS
         };
@@ -78,7 +80,7 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //addUserDetails
-    it("Test if the addUserDetails action creator returns the right action type", ()=>{
+    it("Test if the addUserDetails action creator returns the right action", ()=>{
         let userDetails = {
             firstName: "Francis",
             lastName: "Njuguna",
@@ -92,7 +94,7 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //removeUserDetails
-    it("Test if the removeUserDetails action creator returns the right action type", ()=>{
+    it("Test if the removeUserDetails action creator returns the right action", ()=>{
         let expectedAction = {
             type: REMOVE_USER_DETAILS
         };
@@ -100,13 +102,28 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //logoutSuccess
-    it("Test if the logoutSuccess action creator returns the right action type", ()=>{
+    it("Test if the logoutSuccess action creator returns the right action", ()=>{
         let expectedAction = {
             type: LOGOUT_SUCCESS
         }
         let action = logoutSuccess();
         expect(action).toEqual(expectedAction);
-    })
+    });
+    //addSuccessMessages
+    it("Test if the addSuccessMessages action creator returns the right action", ()=>{
+        let successMessages = [
+            {successMessages: "Login successfully"},
+            {successMessages: "Logout successfully"}
+        ]
+        let action = addSuccessMessages(successMessages);
+        expect(action).toEqual({successMessages, type: ADD_SUCCESS_MESSAGES });
+    });
+    //removeSuccessMessages
+    it("Test if the removeSuccessMessages action creator returns the right action", ()=>{
+        
+        let action = removeSuccessMessages();
+        expect(action).toEqual({type: REMOVE_SUCCESS_MESSAGES});
+    });
 });
 
 describe('async actions', ()=>{
