@@ -74,7 +74,7 @@ describe('Reducer', () => {
             let state = ujumbeAppRedux(undefined, loginSuccess());
             expect(state.signedIn).toEqual(true);
         });
-        it('Expect the returned state userDetails after calling the ADD_USER_DETAILS to have userDetails.', ()=>{
+        it('Expect the returned state userDetails after calling the ADD_USER_DETAILS to have userDetails passed to its actionCreator.', ()=>{
             let userDetails = {
                 firstName: "Francis",
                 lastName: "Njuguna",
