@@ -1,8 +1,12 @@
-import LOGOUT from '../actions';
+import logoutSuccess from './logoutSuccess';
+import removeUserDetails from './removeUserDetails';
 
 
 export const logout = ()=>{
-    return{
-        type: LOGOUT
-    }
+    return (dispatch)=>{
+        //remove the jwt in the local storage
+        localStorage.removeItem("jwt");
+        dispatch(logoutSuccess());
+        dispatch(removeUserDetails());
+    };
 }
