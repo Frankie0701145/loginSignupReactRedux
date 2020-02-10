@@ -4,6 +4,7 @@ import startCall from '../redux/actionCreators/startCall';
 import endCall from '../redux/actionCreators/endCall';
 import loginSuccess from '../redux/actionCreators/loginSuccess';
 import login from '../redux/actionCreators/login';
+import addUserDetails from '../redux/actionCreators/addUserDetails';
 
 import configureMockStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
@@ -66,11 +67,25 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //loginSuccess
-    it('Test if the loginSuccess creator returns the right action type', ()=>{
+    it('Test if the loginSuccess action creator returns the right action type', ()=>{
         let expectedAction = {
             type: LOGIN_SUCCESS
         };
         let action = loginSuccess();
+        expect(action).toEqual(expectedAction);
+    });
+    //addUserDetails
+    it("Test if the addUserDetails action creator returns the right action type", ()=>{
+        let userDetails = {
+            firstName: "Francis",
+            lastName: "Njuguna",
+            accessToken: "ndnqnqomxmqxdq"
+        }
+        let expectedAction = {
+            type: ADD_USER_DETAILS,
+            userDetails
+        }
+        let action = addUserDetails(userDetails);
         expect(action).toEqual(expectedAction);
     });
 });
