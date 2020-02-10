@@ -10,7 +10,7 @@ describe('Reducer', () => {
 
         it('Expect the initial state to have signedIn as false, error to be an empty array and isFetching to be false.', ()=>{
                 let state = ujumbeAppRedux(undefined, {});
-                let expectedState={ signedIn: false, errors: [], isFetching: false };
+                let expectedState={ signedIn: false, errors: [], isFetching: false,userDetails: {} };
                 expect(state).toEqual(expectedState);
         }); 
     
