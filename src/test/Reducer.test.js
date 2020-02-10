@@ -3,6 +3,7 @@ import addErrors from '../redux/actionCreators/addErrors';
 import removeErrors from '../redux/actionCreators/removeErrors';
 import startCall from '../redux/actionCreators/startCall';
 import endCall from '../redux/actionCreators/endCall';
+import loginSuccess from '../redux/actionCreators/loginSuccess';
 
 describe('Reducer', () => {
     
@@ -68,6 +69,9 @@ describe('Reducer', () => {
             let state = ujumbeAppRedux(initialState, endCall());
             expect(state.isFetching).toEqual(false);
         });
-
+        it('Expect the returned state signedIn after calling the LOGIN_SUCCESS to be true if the initial value was false', ()=>{
+            let state = ujumbeAppRedux(undefined, loginSuccess());
+            expect(state.signedIn).toEqual(true);
+        });
     });
 });
