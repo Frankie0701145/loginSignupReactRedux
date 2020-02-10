@@ -2,6 +2,7 @@ import startCall from './startCall';
 import addErrors from './addErrors';
 import endCall from './endCall';
 import loginSuccess from './loginSuccess';
+import addUserDetails from './addUserDetails'
 import axios from 'axios';
 
 const login = (credentials)=>{
@@ -11,8 +12,18 @@ const login = (credentials)=>{
         //post the credentials to the server     
         return axios.post('/users/login', credentials).then((response)=>{
               //dispatch the loginSuccess
-              dispatch(loginSuccess());
-              // dispatch the endCall
+              let data =  response.data;
+              localStorage.setItem("jwt", data.accessToken);
+              let userDetails = {
+                  jwt: response.data.accessToken,
+                  firstName: data.firstName,
+                  lastName: data.lastName,
+                  homeCoordinate: data.homeCoordinate,
+                  workCoordinate: data.workCoordinate,
+                  activated: data.activated
+              }
+              dispatch(addUserDetails(userDetails));
+              dispatch(loginSuccess(userDetails));
               dispatch(endCall());
         }).catch((err)=>{
             let errors =[{
