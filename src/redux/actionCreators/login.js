@@ -1,12 +1,15 @@
 import startCall from './startCall';
 import addErrors from './addErrors';
 import endCall from './endCall';
+import removeErrors from './removeErrors';
 import loginSuccess from './loginSuccess';
 import addUserDetails from './addUserDetails'
 import axios from 'axios';
 
 const login = (credentials)=>{
     return (dispatch )=>{
+        //dispatch remove errors
+        dispatch(removeErrors());
         //dispatch the START_CALL action
         dispatch(startCall());
         //post the credentials to the server     
