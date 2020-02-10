@@ -5,15 +5,17 @@ import endCall from '../redux/actionCreators/endCall';
 import loginSuccess from '../redux/actionCreators/loginSuccess';
 import login from '../redux/actionCreators/login';
 import addUserDetails from '../redux/actionCreators/addUserDetails';
+import logoutSuccess from '../redux/actionCreators/logoutSuccess';
+import removeUserDetails from '../redux/actionCreators/removeUserDetails';
 
 import configureMockStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 
-import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS, REMOVE_USER_DETAILS } 
+import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS, REMOVE_USER_DETAILS, LOGOUT_SUCCESS } 
     from '../redux/actionTypes';
-import removeUserDetails from '../redux/actionCreators/removeUserDetails';
+
 
 
 describe('actionsCreator', ()=>{
@@ -97,6 +99,14 @@ describe('actionsCreator', ()=>{
         let action = removeUserDetails();
         expect(action).toEqual(expectedAction);
     });
+    //logoutSuccess
+    it("Test if the logoutSuccess action creator returns the right action type", ()=>{
+        let expectedAction = {
+            type: LOGOUT_SUCCESS
+        }
+        let action = logoutSuccess();
+        expect(action).toEqual(expectedAction);
+    })
 });
 
 describe('async actions', ()=>{
