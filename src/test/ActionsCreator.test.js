@@ -104,7 +104,7 @@ describe('async actions', ()=>{
         mock.reset();
     });
     //Successful login
-    it('Test if the following actions are dispatched for a successful login action: START_CALL,ADD_USER_DETAILS and LOGIN_SUCCESS and END_CALL.', ()=>{
+    it('Test if the following actions are dispatched for a successful login action:REMOVE_ERRORS,START_CALL,ADD_USER_DETAILS and LOGIN_SUCCESS and END_CALL.', ()=>{
         let credentials = {
             email: "coulsorfrancois@gmail.com",
             password: "pass"
@@ -138,7 +138,7 @@ describe('async actions', ()=>{
         }); 
     });
     //Unsuccessful login
-    it('Test if the following actions are dispatched for unsuccessful login action.START_CALL, ADD_ERRORS and END_CALL. ', ()=>{
+    it('Test if the following actions are dispatched for unsuccessful login action.REMOVE_ERRORS,START_CALL, ADD_ERRORS and END_CALL. ', ()=>{
         let credentials = {
             email: "coulsorfrancois@gmail.com",
             password: "pass"
