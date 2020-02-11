@@ -110,7 +110,7 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //addSuccessMessages
-    it.only("Test if the addSuccessMessages action creator returns the right action", ()=>{
+    it("Test if the addSuccessMessages action creator returns the right action", ()=>{
         let successMessages = [
             {successMessage: "Login successfully"},
             {successMessage: "Logout successfully"}
@@ -158,9 +158,11 @@ describe('async actions', ()=>{
         let expectedActions = [
             {type: REMOVE_ERRORS},
             {type: START_CALL},
-            {type: ADD_USER_DETAILS, userDetails: data},
+            {type: END_CALL},
             {type: LOGIN_SUCCESS},
-            {type: END_CALL}
+            {type: ADD_USER_DETAILS, userDetails: data},
+            {type: ADD_SUCCESS_MESSAGES, successMessages: [{successMessage: "Login successfully"}]}
+            
         ];
         let initialState = {
             error: [],
