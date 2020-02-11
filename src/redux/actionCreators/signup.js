@@ -19,6 +19,7 @@ const signup = (userDetails)=>{
                 ];
                 dispatch(addSuccessMessages(successMessages));
         }).catch((err)=>{
+            console.log(err);
             let errors = err.response.data
             dispatch(addErrors(errors));   
             dispatch(endCall());

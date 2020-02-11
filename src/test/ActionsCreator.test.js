@@ -240,17 +240,21 @@ describe('async actions', ()=>{
             expect(store.getActions()).toMatchObject(expectedActions);
         });
     });
-    it("Test if the following actions are dispatched for successful signup START_CALL, END_CALL and SIGNUP_SUCCESSFUL", ()=>{
+    //successfully signup
+    it.only("Test if the following actions are dispatched for successful signup REMOVE_ERROR, START_CALL, END_CALL and SIGNUP_SUCCESSFUL, ADD_SUCCESS_MESSAGES", ()=>{
         let userDetails = {
             email: "coulsorfrancois@gmail.com",
             password: "pass",
             phoneNumber: "0701145533"
         }
-        mock.onPost('users/signup').reply(204);
+        mock.onPost('users/signup').reply(204, userDetails);
+        let message = "Signup successful. Please click on the link sent to your email to activate account. coulsorfrancois@gmail.com";
         let expectedActions = [
+            {type: REMOVE_ERRORS},
             {type: START_CALL},
             {type: END_CALL },
-            {type: SIGNUP_SUCCESS}
+            {type: SIGNUP_SUCCESS},
+            {type: ADD_SUCCESS_MESSAGES, successMessages: [{successMessage: message}]}
         ]
         let initialState = {
             error: [],
