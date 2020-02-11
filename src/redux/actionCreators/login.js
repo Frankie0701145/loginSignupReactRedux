@@ -3,7 +3,8 @@ import addErrors from './addErrors';
 import endCall from './endCall';
 import removeErrors from './removeErrors';
 import loginSuccess from './loginSuccess';
-import addUserDetails from './addUserDetails'
+import addUserDetails from './addUserDetails';
+import addSuccessMessages from './addSucccessMessages';
 import axios from 'axios';
 
 const login = (credentials)=>{
@@ -25,9 +26,13 @@ const login = (credentials)=>{
                   workCoordinate: data.workCoordinate,
                   activated: data.activated
               }
-              dispatch(addUserDetails(userDetails));
-              dispatch(loginSuccess());
+              let successMessages = [
+                  {successMessage:"Login successfully"}
+              ]
               dispatch(endCall());
+              dispatch(loginSuccess());
+              dispatch(addUserDetails(userDetails)); 
+              dispatch(addSuccessMessages(successMessages));
         }).catch((err)=>{
             let errors =[{
                 errorMessage: err.response.data.message,

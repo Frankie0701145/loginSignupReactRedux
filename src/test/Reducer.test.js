@@ -104,7 +104,7 @@ describe('Reducer', () => {
             expect(state.successMessages).toEqual(successMessages);
         });
 
-        it.only("Expect the returned state of successMessages to be un-empty array after calling removeSuccessMessages action",()=>{
+        it("Expect the returned state of successMessages to be un-empty array after calling removeSuccessMessages action",()=>{
             let successMessages = [
                 {successMessage: "Login successfully"},
                 {successMessage: "Logout successfully"}
