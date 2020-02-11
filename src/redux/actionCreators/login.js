@@ -4,7 +4,7 @@ import endCall from './endCall';
 import removeErrors from './removeErrors';
 import loginSuccess from './loginSuccess';
 import addUserDetails from './addUserDetails';
-import addSuccessMessages from './addSucccessMessages';
+import addSuccessMessages from './addSuccessMessages';
 import axios from 'axios';
 
 const login = (credentials)=>{
