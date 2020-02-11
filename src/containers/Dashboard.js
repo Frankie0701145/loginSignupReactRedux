@@ -7,7 +7,7 @@ export class Dashboard extends Component {
     render(){
         return(
             <div className="container">
-                {this.props.successMessages.length> 0 ? <SuccessMessages SuccessMessages={this.props.removeSuccessMessages} removeSuccessMessages={this.props.removeSuccessMessages}/>: ""}
+                {this.props.successMessages.length> 0 ? <SuccessMessages successMessages={this.props.removeSuccessMessages} removeSuccessMessages={this.props.removeSuccessMessages}/>: ""}
                 <div className="row">
                     Home
                 </div>
