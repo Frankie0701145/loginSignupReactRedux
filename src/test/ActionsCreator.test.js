@@ -16,7 +16,7 @@ import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 
-import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS, REMOVE_USER_DETAILS, LOGOUT_SUCCESS, REMOVE_SUCCESS_MESSAGES, ADD_SUCCESS_MESSAGES } 
+import { ADD_ERRORS, REMOVE_ERRORS, START_CALL, END_CALL, LOGIN_SUCCESS, ADD_USER_DETAILS, REMOVE_USER_DETAILS, LOGOUT_SUCCESS, REMOVE_SUCCESS_MESSAGES, ADD_SUCCESS_MESSAGES,SIGNUP_SUCCESS } 
     from '../redux/actionTypes';
 import removeSuccessMessages from '../redux/actionCreators/removeSuccessMessages';
 
@@ -81,7 +81,6 @@ describe('actionsCreator', ()=>{
         let action = loginSuccess();
         expect(action).toEqual(expectedAction);
     });
-<<<<<<< HEAD
     //signupSuccess
     it("Test if the signupSuccess creator returns the right action type", ()=>{
         let expectAction = {
@@ -89,7 +88,7 @@ describe('actionsCreator', ()=>{
         };
         let action = signupSuccess();
         expect(action).toEqual(expectAction);
-=======
+    });
     //addUserDetails
     it("Test if the addUserDetails action creator returns the right action", ()=>{
         let userDetails = {
@@ -134,8 +133,8 @@ describe('actionsCreator', ()=>{
         
         let action = removeSuccessMessages();
         expect(action).toEqual({type: REMOVE_SUCCESS_MESSAGES});
->>>>>>> staging
     });
+
 });
 
 describe('async actions', ()=>{
