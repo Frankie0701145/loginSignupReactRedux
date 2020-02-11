@@ -6,7 +6,7 @@ import endCall from '../redux/actionCreators/endCall';
 import loginSuccess from '../redux/actionCreators/loginSuccess';
 import logoutSuccess from '../redux/actionCreators/logoutSuccess';
 import addUserDetails from '../redux/actionCreators/addUserDetails';
-import addSuccessMessages from '../redux/actionCreators/addSucccessMessages';
+import addSuccessMessages from '../redux/actionCreators/addSuccessMessages';
 import removeSuccessMessages from '../redux/actionCreators/removeSuccessMessages';
 
 describe('Reducer', () => {
