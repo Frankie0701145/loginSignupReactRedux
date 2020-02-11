@@ -6,6 +6,8 @@ import endCall from '../redux/actionCreators/endCall';
 import loginSuccess from '../redux/actionCreators/loginSuccess';
 import logoutSuccess from '../redux/actionCreators/logoutSuccess';
 import addUserDetails from '../redux/actionCreators/addUserDetails';
+import addSuccessMessages from '../redux/actionCreators/addSucccessMessages';
+import removeSuccessMessages from '../redux/actionCreators/removeSuccessMessages';
 
 describe('Reducer', () => {
     
@@ -91,6 +93,27 @@ describe('Reducer', () => {
             };
             let state = ujumbeAppRedux(initialState,logoutSuccess());
             expect(state.signedIn).toEqual(false);
+        });
+
+        it("Expect the returned state of successMessages to have an array of successMessages after calling addSuccessMessages action", ()=>{
+            let successMessages = [
+                {successMessages: "Login successfully"},
+                {successMessages: "Logout successfully"}
+            ]
+            let state = ujumbeAppRedux(undefined, addSuccessMessages(successMessages));
+            expect(state.successMessages).toEqual(successMessages);
+        });
+
+        it.only("Expect the returned state of successMessages to be un-empty array after calling removeSuccessMessages action",()=>{
+            let successMessages = [
+                {successMessages: "Login successfully"},
+                {successMessages: "Logout successfully"}
+            ]
+            let initialState = {
+                successMessages: successMessages
+            }
+            let state = ujumbeAppRedux(initialState, removeSuccessMessages());
+            expect(state.successMessages).toEqual([]);
         });
     });
 });
