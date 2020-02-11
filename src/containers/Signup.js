@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import addErrors from '../redux/actionCreators/addErrors';
 import removeErrors from '../redux/actionCreators/removeErrors';
+import removeSuccessMessages from '../redux/actionCreators/removeSuccessMessages';
 import signup from '../redux/actionCreators/signup';
 import ErrorComponent from '../components/Errors';
+import SuccessMessages from './SuccessMessages';
 
 
 export class Signup extends Component{
@@ -38,6 +40,7 @@ export class Signup extends Component{
                     <form className="col s12" method="POST" onSubmit={this.submit}>
 
                     {this.props.errors.length> 0 ? <ErrorComponent errors={this.props.errors} removeErrors={this.props.removeErrors}/>: "All is good"}
+                    {this.props.successMessages.length> 0 ? <SuccessMessages successMessages={this.props.removeSuccessMessages} removeSuccessMessages={this.props.removeSuccessMessages}/>: ""}
                         <div className="row">
                             <div className="input-field col s6">
                                 <input id="firstName" name="firstName" type="text" className="validate" data-testid="firstName" required={true}/>
@@ -114,7 +117,8 @@ const mapStateToState = (state, ownProps)=>{
     return ({
         signedIn: state.signedIn,
         isFetching: state.isFetching,
-        errors:  state.errors
+        errors:  state.errors,
+        successMessages: state.successMessages
     });
 }
 
@@ -122,7 +126,8 @@ const mapDispatchToState = (dispatch, ownProps)=>{
     return({
         addErrors: (errors)=>{dispatch(addErrors(errors))},
         removeErrors: ()=>{dispatch(removeErrors())},
-        signup: (userDetails)=>{dispatch(signup(userDetails))}
+        signup: (userDetails)=>{dispatch(signup(userDetails))},
+        removeSuccessMessages: ()=>{dispatch(removeSuccessMessages())}
     })
 }
 
