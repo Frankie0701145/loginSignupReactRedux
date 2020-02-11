@@ -3,12 +3,12 @@ import { render } from '@testing-library/react';
 import {Signup} from '../containers/Signup';
 
 test('test the rendering of the Signup component', () => {
-    render(<Signup errors={[]}/>);
+    render(<Signup errors={[]} successMessages={[]}/>);
 });
 
 test('test that the signup component has the firstName,lastName, homeAddress, workAddress, email, password and confirmPassword input and they have required=true attribute and name attribute.', 
     () => {
-            let {getByTestId}=render(<Signup errors={[]}/>);
+            let {getByTestId}=render(<Signup errors={[]} successMessages={[]}/>);
             let firstName = getByTestId('firstName');
             let lastName = getByTestId('lastName');
             let homeAddress = getByTestId('homeAddress');
