@@ -6,6 +6,7 @@ import {BrowserRouter, Switch} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
+import Dashboard from './Dashboard';
 
 function App(props) {
     return(
@@ -16,6 +17,7 @@ function App(props) {
         <Switch>
           <Route path='/login' component={Login}/>
           <Route path='/signup' component={Signup}/>
+          <Route path='/' component={Dashboard}/>
         </Switch>
       </BrowserRouter>
     )
