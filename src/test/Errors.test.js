@@ -3,7 +3,7 @@ import { render,getNodeText } from '@testing-library/react';
 import Errors from '../components/Errors';
 
 
-test.only(" Test that the Errors component gets rendered and that the errors that gets passed through the props are displayed.", ()=>{
+test(" Test that the Errors component gets rendered and that the errors that gets passed through the props are displayed.", ()=>{
 
         let errorsProps = [
             {

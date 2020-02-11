@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 const SignedOutLinks = (props)=>{
     return(
 
-        <ul id="nav-mobile" className="right hide-on-med-and-down" data-testid="signedOutUl">
+        <ul id="nav-mobile" className="right hide-on-med-and-down" data-testid="signedOutUI">
                 <li>
                     <NavLink to="/login" data-testid="loginLink">Log In</NavLink>
                 </li>
