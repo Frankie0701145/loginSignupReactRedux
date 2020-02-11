@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom'
 const logout = (props)=>{
     props.logoutSuccess();
     props.removeUserDetail();
+    localStorage.removeItem('jwt');
 }
 
 const SignedInLinks = (props)=>{
