@@ -9,7 +9,7 @@ import login from '../redux/actionCreators/login';
 import addUserDetails from '../redux/actionCreators/addUserDetails';
 import logoutSuccess from '../redux/actionCreators/logoutSuccess';
 import removeUserDetails from '../redux/actionCreators/removeUserDetails';
-import addSuccessMessages from '../redux/actionCreators/addSucccessMessages';
+import addSuccessMessages from '../redux/actionCreators/addSuccessMessages';
 
 import configureMockStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
@@ -213,7 +213,7 @@ describe('async actions', ()=>{
         }); 
     });
     //Unsuccessful signup
-    it("Test if the following actions are dispatched for unsuccessful signup START_CALL, ADD_ERRORS and END_CALL", ()=>{
+    it("Test if the following actions are dispatched for unsuccessful signup REMOVE_ERRORS,START_CALL, ADD_ERRORS and END_CALL", ()=>{
         let userDetails = {
             email: "coulsorfrancois@gmail.com",
             password: "pass",
@@ -225,6 +225,7 @@ describe('async actions', ()=>{
         ]
         mock.onPost('/users/signup').reply(400,errors);
         let expectedActions = [
+            {type: REMOVE_ERRORS},
             {type: START_CALL},
             {type: ADD_ERRORS},
             {type: END_CALL }

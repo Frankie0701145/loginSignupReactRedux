@@ -8,8 +8,8 @@ import addSuccessMessages from './addSuccessMessages';
 
 const signup = (userDetails)=>{
     return (dispatch)=>{
-        dispatch(startCall());
         dispatch(removeErrors());
+        dispatch(startCall());
         return axios.post('/users/signup', userDetails).then((response)=>{
                 console.log(response);
                 dispatch(endCall());
