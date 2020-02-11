@@ -110,10 +110,10 @@ describe('actionsCreator', ()=>{
         expect(action).toEqual(expectedAction);
     });
     //addSuccessMessages
-    it("Test if the addSuccessMessages action creator returns the right action", ()=>{
+    it.only("Test if the addSuccessMessages action creator returns the right action", ()=>{
         let successMessages = [
-            {successMessages: "Login successfully"},
-            {successMessages: "Logout successfully"}
+            {successMessage: "Login successfully"},
+            {successMessage: "Logout successfully"}
         ]
         let action = addSuccessMessages(successMessages);
         expect(action).toEqual({successMessages, type: ADD_SUCCESS_MESSAGES });

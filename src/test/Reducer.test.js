@@ -97,8 +97,8 @@ describe('Reducer', () => {
 
         it("Expect the returned state of successMessages to have an array of successMessages after calling addSuccessMessages action", ()=>{
             let successMessages = [
-                {successMessages: "Login successfully"},
-                {successMessages: "Logout successfully"}
+                {successMessage: "Login successfully"},
+                {successMessage: "Logout successfully"}
             ]
             let state = ujumbeAppRedux(undefined, addSuccessMessages(successMessages));
             expect(state.successMessages).toEqual(successMessages);
@@ -106,8 +106,8 @@ describe('Reducer', () => {
 
         it.only("Expect the returned state of successMessages to be un-empty array after calling removeSuccessMessages action",()=>{
             let successMessages = [
-                {successMessages: "Login successfully"},
-                {successMessages: "Logout successfully"}
+                {successMessage: "Login successfully"},
+                {successMessage: "Logout successfully"}
             ]
             let initialState = {
                 successMessages: successMessages
